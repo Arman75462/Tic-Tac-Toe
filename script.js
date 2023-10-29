@@ -95,3 +95,13 @@ function checkWinner() {
     body.textContent = "x Wins!!!";
   }
 }
+
+function createPlayer(letter, turn) {
+  return {
+    letter,
+    turn,
+  };
+}
+
+const playerX = createPlayer("x", true);
+const playerO = createPlayer("o", false);

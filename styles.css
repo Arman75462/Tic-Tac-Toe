@@ -89,8 +89,8 @@ SPECIFIC LAYOUT AND STYLES====
 
 /* GAMEBOARD */
 .game-board {
-  height: 400px;
-  width: 400px;
+  height: 350px;
+  width: 350px;
   /* To center the game-board element */
   position: absolute;
   top: 50%;
