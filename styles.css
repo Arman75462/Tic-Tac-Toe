@@ -78,6 +78,11 @@ body {
   min-height: 100vh;
 }
 
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
 /*============================
 SPECIFIC LAYOUT AND STYLES====
 ==============================*/
@@ -102,8 +107,11 @@ SPECIFIC LAYOUT AND STYLES====
   justify-content: center;
   align-items: center;
   /* Text style */
-  font-size: 8rem;
+  font-size: 5rem;
   font-weight: 300;
+  /* Minimum dimensions to maintain consistency, or else whenever we enter text inside the grid-items, their size increases, and it's weird */
+  min-width: 100px;
+  min-height: 100px;
 }
 
 .grid-item1,
