@@ -3,6 +3,7 @@
 /* Selectors */
 const body = document.querySelector("body");
 const gameBoard = document.querySelector(".game-board");
+const winnerMessage = document.querySelector(".winner-message");
 const cells = document.querySelectorAll(".grid-item");
 const cell1 = document.querySelector(".grid-item1");
 const cell2 = document.querySelector(".grid-item2");
@@ -71,7 +72,7 @@ function checkWinner() {
       cell8.textContent === "x" &&
       cell9.textContent === "x")
   ) {
-    body.textContent = "x Wins!!!";
+    winnerMessage.textContent = "Player X Wins!!!";
   } else if (
     (cell1.textContent === "x" &&
       cell4.textContent === "x" &&
@@ -83,7 +84,7 @@ function checkWinner() {
       cell6.textContent === "x" &&
       cell9.textContent === "x")
   ) {
-    body.textContent = "x Wins!!!";
+    winnerMessage.textContent = "Player X Wins!!!";
   } else if (
     (cell1.textContent === "x" &&
       cell5.textContent === "x" &&
@@ -92,10 +93,11 @@ function checkWinner() {
       cell5.textContent === "x" &&
       cell7.textContent === "x")
   ) {
-    body.textContent = "x Wins!!!";
+    winnerMessage.textContent = "Player X Wins!!!";
   }
 }
 
+/* factory functio to create player object */
 function createPlayer(letter, turn) {
   return {
     letter,
