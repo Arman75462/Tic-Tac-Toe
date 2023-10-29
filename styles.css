@@ -94,6 +94,7 @@ body {
   font-size: 2.5rem;
   border-radius: 10px;
   margin: 0 2em;
+  position: relative;
 }
 
 /*============================
@@ -121,30 +122,12 @@ SPECIFIC LAYOUT AND STYLES====
 }
 
 /* PLAYER-X-SECTION */
-.btn-x {
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em green;
-  box-shadow: inset 0 0 0.5em 0 green, 0 0 5em 1.5em green;
-  position: relative;
-  color: green;
-  border: green 0.125em solid;
-  position: relative;
-}
-
 .btn-x,
 .player-x-score {
   transform: rotateY(30deg);
 }
 
 /* PLAYER-O-SECTION */
-.btn-o {
-  text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em red;
-  box-shadow: inset 0 0 0.5em 0 rgb(255, 0, 0), 0 0 5em 1.5em red;
-  position: relative;
-  color: red;
-  border: red 0.125em solid;
-  position: relative;
-}
-
 .btn-o,
 .player-o-score {
   transform: rotateY(-30deg);

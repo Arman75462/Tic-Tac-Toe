@@ -3,6 +3,8 @@
 /* Selectors */
 const body = document.querySelector("body");
 const gameBoard = document.querySelector(".game-board");
+const btnX = document.querySelector(".btn-x");
+const btnO = document.querySelector(".btn-o");
 const winnerMessage = document.querySelector(".winner-message");
 const cells = document.querySelectorAll(".grid-item");
 const cell1 = document.querySelector(".grid-item1");
@@ -60,6 +62,17 @@ cell9.addEventListener("click", function () {
   checkWinner();
 });
 
+/* factory functio to create player object */
+function createPlayer(letter, turn) {
+  return {
+    letter,
+    turn,
+  };
+}
+
+const playerX = createPlayer("x", false);
+const playerO = createPlayer("o", true);
+
 function checkWinner() {
   if (
     (cell1.textContent === "x" &&
@@ -97,13 +110,50 @@ function checkWinner() {
   }
 }
 
-/* factory functio to create player object */
-function createPlayer(letter, turn) {
-  return {
-    letter,
-    turn,
-  };
+function playerTurn() {
+  if (playerX.turn) {
+    // Set the text-shadow property
+    btnX.style.textShadow =
+      "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em green";
+    // Set the box-shadow property
+    btnX.style.boxShadow = "inset 0 0 0.5em 0 green, 0 0 5em 1.5em green";
+    // Set the color property
+    btnX.style.color = "green";
+    // Set the border property
+    btnX.style.border = "0.125em solid green";
+
+    // Set the text-shadow property
+    btnO.style.textShadow =
+      "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em red";
+    // Set the box-shadow property
+    btnO.style.boxShadow =
+      "inset 0 0 0.5em 0 rgb(255, 0, 0), 0 0 5em 1.5em red";
+    // Set the color property
+    btnO.style.color = "red";
+    // Set the border property
+    btnO.style.border = "0.125em solid red";
+  } else if (playerO.turn) {
+    // Set the text-shadow property
+    btnO.style.textShadow =
+      "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em green";
+    // Set the box-shadow property
+    btnO.style.boxShadow = "inset 0 0 0.5em 0 green, 0 0 5em 1.5em green";
+    // Set the color property
+    btnO.style.color = "green";
+    // Set the border property
+    btnO.style.border = "0.125em solid green";
+
+    // Set the text-shadow property
+    btnX.style.textShadow =
+      "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em red";
+    // Set the box-shadow property
+    btnX.style.boxShadow =
+      "inset 0 0 0.5em 0 rgb(255, 0, 0), 0 0 5em 1.5em red";
+    // Set the color property
+    btnX.style.color = "red";
+    // Set the border property
+    btnX.style.border = "0.125em solid red";
+  }
 }
 
-const playerX = createPlayer("x", true);
-const playerO = createPlayer("o", false);
+playerTurn();
