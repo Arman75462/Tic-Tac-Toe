@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;600;700&display=swap");
 
 /*============================
 RESETS========================
@@ -74,9 +74,53 @@ GENERAL LAYOUT AND STYLES=====
   font-family: "Roboto", sans-serif;
 }
 
+body {
+  min-height: 100vh;
+}
+
 /*============================
 SPECIFIC LAYOUT AND STYLES====
 ==============================*/
+
+/* GAMEBOARD */
+.game-board {
+  height: 400px;
+  width: 400px;
+  /* To center the game-board element */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Grid */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-item {
+  /* To center the text inside the grid-items */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Text style */
+  font-size: 8rem;
+  font-weight: 300;
+}
+
+.grid-item1,
+.grid-item2,
+.grid-item3,
+.grid-item4,
+.grid-item5,
+.grid-item6 {
+  border-bottom: 2px solid black;
+}
+
+.grid-item2,
+.grid-item5,
+.grid-item8 {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
 
 /*============================
 MEDIA QUERIES=================
