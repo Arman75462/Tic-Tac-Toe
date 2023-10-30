@@ -3,6 +3,8 @@
 /* Selectors */
 const body = document.querySelector("body");
 const gameBoard = document.querySelector(".game-board");
+const playerXScore = document.querySelector(".player-x-score");
+const playerOScore = document.querySelector(".player-o-score");
 const cardX = document.querySelector(".card-x");
 const cardO = document.querySelector(".card-o");
 const winnerMessage = document.querySelector(".winner-message");
@@ -19,14 +21,15 @@ const cell8 = document.querySelector(".grid-item8");
 const cell9 = document.querySelector(".grid-item9");
 
 /* Factory function to create player object */
-function createPlayer(letter, turn) {
+function createPlayer(letter, turn, score) {
   return {
     letter,
     turn,
+    score,
   };
 }
-const playerX = createPlayer("x", true);
-const playerO = createPlayer("o", false);
+const playerX = createPlayer("x", true, 0);
+const playerO = createPlayer("o", false, 0);
 
 let playerXTurn = [];
 let playerOTurn = [];
@@ -58,6 +61,7 @@ restartGameButton.addEventListener("click", function () {
   cell7.textContent = "";
   cell8.textContent = "";
   cell9.textContent = "";
+  winnerMessage.textContent = "";
 });
 
 cell1.addEventListener("click", function () {
@@ -65,11 +69,9 @@ cell1.addEventListener("click", function () {
     if (playerO.turn) {
       cell1.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
-      console.log(playerOTurn);
     } else if (playerX.turn) {
       cell1.textContent = playerX.letter;
       playerXTurn.push(playerX.letter);
-      console.log(playerXTurn);
     }
     checkWinner();
     playerTurnLogic();
@@ -82,11 +84,9 @@ cell2.addEventListener("click", function () {
     if (playerO.turn) {
       cell2.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
-      console.log(playerOTurn);
     } else if (playerX.turn) {
       cell2.textContent = playerX.letter;
       playerXTurn.push(playerX.letter);
-      console.log(playerXTurn);
     }
     checkWinner();
     playerTurnLogic();
@@ -99,11 +99,9 @@ cell3.addEventListener("click", function () {
     if (playerO.turn) {
       cell3.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
-      console.log(playerOTurn);
     } else if (playerX.turn) {
       cell3.textContent = playerX.letter;
       playerXTurn.push(playerX.letter);
-      console.log(playerXTurn);
     }
     checkWinner();
     playerTurnLogic();
@@ -116,11 +114,9 @@ cell4.addEventListener("click", function () {
     if (playerO.turn) {
       cell4.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
-      console.log(playerOTurn);
     } else if (playerX.turn) {
       cell4.textContent = playerX.letter;
       playerXTurn.push(playerX.letter);
-      console.log(playerXTurn);
     }
     checkWinner();
     playerTurnLogic();
@@ -133,11 +129,9 @@ cell5.addEventListener("click", function () {
     if (playerO.turn) {
       cell5.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
-      console.log(playerOTurn);
     } else if (playerX.turn) {
       cell5.textContent = playerX.letter;
       playerXTurn.push(playerX.letter);
-      console.log(playerXTurn);
     }
     checkWinner();
     playerTurnLogic();
@@ -150,11 +144,9 @@ cell6.addEventListener("click", function () {
     if (playerO.turn) {
       cell6.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
-      console.log(playerOTurn);
     } else if (playerX.turn) {
       cell6.textContent = playerX.letter;
       playerXTurn.push(playerX.letter);
-      console.log(playerXTurn);
     }
     checkWinner();
     playerTurnLogic();
@@ -167,11 +159,9 @@ cell7.addEventListener("click", function () {
     if (playerO.turn) {
       cell7.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
-      console.log(playerOTurn);
     } else if (playerX.turn) {
       cell7.textContent = playerX.letter;
       playerXTurn.push(playerX.letter);
-      console.log(playerXTurn);
     }
     checkWinner();
     playerTurnLogic();
@@ -184,11 +174,9 @@ cell8.addEventListener("click", function () {
     if (playerO.turn) {
       cell8.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
-      console.log(playerOTurn);
     } else if (playerX.turn) {
       cell8.textContent = playerX.letter;
       playerXTurn.push(playerX.letter);
-      console.log(playerXTurn);
     }
     checkWinner();
     playerTurnLogic();
@@ -201,11 +189,9 @@ cell9.addEventListener("click", function () {
     if (playerO.turn) {
       cell9.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
-      console.log(playerOTurn);
     } else if (playerX.turn) {
       cell9.textContent = playerX.letter;
       playerXTurn.push(playerX.letter);
-      console.log(playerXTurn);
     }
     checkWinner();
     playerTurnLogic();
@@ -227,6 +213,8 @@ function checkWinner() {
   ) {
     winnerMessage.textContent = "Player X Wins!!!";
     gameOver = true;
+    playerX.score = playerX.score + 1;
+    playerXScore.textContent = `Score: ${playerX.score}`;
   } else if (
     (cell1.textContent === playerX.letter &&
       cell4.textContent === playerX.letter &&
@@ -240,6 +228,8 @@ function checkWinner() {
   ) {
     winnerMessage.textContent = "Player X Wins!!!";
     gameOver = true;
+    playerX.score = playerX.score + 1;
+    playerXScore.textContent = `Score: ${playerX.score}`;
   } else if (
     (cell1.textContent === playerX.letter &&
       cell5.textContent === playerX.letter &&
@@ -250,6 +240,8 @@ function checkWinner() {
   ) {
     winnerMessage.textContent = "Player X Wins!!!";
     gameOver = true;
+    playerX.score = playerX.score + 1;
+    playerXScore.textContent = `Score: ${playerX.score}`;
   } else if (
     (cell1.textContent === playerO.letter &&
       cell2.textContent === playerO.letter &&
@@ -263,6 +255,8 @@ function checkWinner() {
   ) {
     winnerMessage.textContent = "Player O Wins!!!";
     gameOver = true;
+    playerO.score = playerO.score + 1;
+    playerOScore.textContent = `Score: ${playerO.score}`;
   } else if (
     (cell1.textContent === playerO.letter &&
       cell4.textContent === playerO.letter &&
@@ -276,6 +270,8 @@ function checkWinner() {
   ) {
     winnerMessage.textContent = "Player O Wins!!!";
     gameOver = true;
+    playerO.score = playerO.score + 1;
+    playerOScore.textContent = `Score: ${playerO.score}`;
   } else if (
     (cell1.textContent === playerO.letter &&
       cell5.textContent === playerO.letter &&
@@ -286,6 +282,8 @@ function checkWinner() {
   ) {
     winnerMessage.textContent = "Player O Wins!!!";
     gameOver = true;
+    playerO.score = playerO.score + 1;
+    playerOScore.textContent = `Score: ${playerO.score}`;
   }
 }
 
