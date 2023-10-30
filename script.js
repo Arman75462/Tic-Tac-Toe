@@ -64,6 +64,28 @@ restartGameButton.addEventListener("click", function () {
   winnerMessage.textContent = "";
 });
 
+resetScoreButton.addEventListener("click", function () {
+  playerX.score = 0;
+  playerO.score = 0;
+  playerXScore.textContent = `Score: ${playerX.score}`;
+  playerOScore.textContent = `Score: ${playerO.score}`;
+
+  gameOver = false;
+  playerXTurn = [];
+  playerOTurn = [];
+
+  cell1.textContent = "";
+  cell2.textContent = "";
+  cell3.textContent = "";
+  cell4.textContent = "";
+  cell5.textContent = "";
+  cell6.textContent = "";
+  cell7.textContent = "";
+  cell8.textContent = "";
+  cell9.textContent = "";
+  winnerMessage.textContent = "";
+});
+
 cell1.addEventListener("click", function () {
   if (!gameOver && cell1.textContent === "" && (playerO.turn || playerX.turn)) {
     if (playerO.turn) {
