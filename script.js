@@ -28,6 +28,7 @@ const playerO = createPlayer("o", false);
 
 let playerXTurn = [];
 let playerOTurn = [];
+let gameOver = false;
 
 function playerTurnLogic() {
   if (playerXTurn.includes(playerX.letter)) {
@@ -42,7 +43,7 @@ function playerTurnLogic() {
 }
 
 cell1.addEventListener("click", function () {
-  if (cell1.textContent === "" && (playerO.turn || playerX.turn)) {
+  if (!gameOver && cell1.textContent === "" && (playerO.turn || playerX.turn)) {
     if (playerO.turn) {
       cell1.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
@@ -59,7 +60,7 @@ cell1.addEventListener("click", function () {
 });
 
 cell2.addEventListener("click", function () {
-  if (cell2.textContent === "" && (playerO.turn || playerX.turn)) {
+  if (!gameOver && cell2.textContent === "" && (playerO.turn || playerX.turn)) {
     if (playerO.turn) {
       cell2.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
@@ -76,7 +77,7 @@ cell2.addEventListener("click", function () {
 });
 
 cell3.addEventListener("click", function () {
-  if (cell3.textContent === "" && (playerO.turn || playerX.turn)) {
+  if (!gameOver && cell3.textContent === "" && (playerO.turn || playerX.turn)) {
     if (playerO.turn) {
       cell3.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
@@ -93,7 +94,7 @@ cell3.addEventListener("click", function () {
 });
 
 cell4.addEventListener("click", function () {
-  if (cell4.textContent === "" && (playerO.turn || playerX.turn)) {
+  if (!gameOver && cell4.textContent === "" && (playerO.turn || playerX.turn)) {
     if (playerO.turn) {
       cell4.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
@@ -110,7 +111,7 @@ cell4.addEventListener("click", function () {
 });
 
 cell5.addEventListener("click", function () {
-  if (cell5.textContent === "" && (playerO.turn || playerX.turn)) {
+  if (!gameOver && cell5.textContent === "" && (playerO.turn || playerX.turn)) {
     if (playerO.turn) {
       cell5.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
@@ -127,7 +128,7 @@ cell5.addEventListener("click", function () {
 });
 
 cell6.addEventListener("click", function () {
-  if (cell6.textContent === "" && (playerO.turn || playerX.turn)) {
+  if (!gameOver && cell6.textContent === "" && (playerO.turn || playerX.turn)) {
     if (playerO.turn) {
       cell6.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
@@ -144,7 +145,7 @@ cell6.addEventListener("click", function () {
 });
 
 cell7.addEventListener("click", function () {
-  if (cell7.textContent === "" && (playerO.turn || playerX.turn)) {
+  if (!gameOver && cell7.textContent === "" && (playerO.turn || playerX.turn)) {
     if (playerO.turn) {
       cell7.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
@@ -161,7 +162,7 @@ cell7.addEventListener("click", function () {
 });
 
 cell8.addEventListener("click", function () {
-  if (cell8.textContent === "" && (playerO.turn || playerX.turn)) {
+  if (!gameOver && cell8.textContent === "" && (playerO.turn || playerX.turn)) {
     if (playerO.turn) {
       cell8.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
@@ -178,7 +179,7 @@ cell8.addEventListener("click", function () {
 });
 
 cell9.addEventListener("click", function () {
-  if (cell9.textContent === "" && (playerO.turn || playerX.turn)) {
+  if (!gameOver && cell9.textContent === "" && (playerO.turn || playerX.turn)) {
     if (playerO.turn) {
       cell9.textContent = playerO.letter;
       playerOTurn.push(playerO.letter);
@@ -207,6 +208,7 @@ function checkWinner() {
       cell9.textContent === playerX.letter)
   ) {
     winnerMessage.textContent = "Player X Wins!!!";
+    gameOver = true;
   } else if (
     (cell1.textContent === playerX.letter &&
       cell4.textContent === playerX.letter &&
@@ -218,7 +220,8 @@ function checkWinner() {
       cell6.textContent === playerX.letter &&
       cell9.textContent === playerX.letter)
   ) {
-    winnerMessage.textContent = "Player X Wins!!!"; // Call the triggerConfetti function
+    winnerMessage.textContent = "Player X Wins!!!";
+    gameOver = true;
   } else if (
     (cell1.textContent === playerX.letter &&
       cell5.textContent === playerX.letter &&
@@ -228,6 +231,7 @@ function checkWinner() {
       cell7.textContent === playerX.letter)
   ) {
     winnerMessage.textContent = "Player X Wins!!!";
+    gameOver = true;
   } else if (
     (cell1.textContent === playerO.letter &&
       cell2.textContent === playerO.letter &&
@@ -240,6 +244,7 @@ function checkWinner() {
       cell9.textContent === playerO.letter)
   ) {
     winnerMessage.textContent = "Player O Wins!!!";
+    gameOver = true;
   } else if (
     (cell1.textContent === playerO.letter &&
       cell4.textContent === playerO.letter &&
@@ -252,6 +257,7 @@ function checkWinner() {
       cell9.textContent === playerO.letter)
   ) {
     winnerMessage.textContent = "Player O Wins!!!";
+    gameOver = true;
   } else if (
     (cell1.textContent === playerO.letter &&
       cell5.textContent === playerO.letter &&
@@ -261,6 +267,7 @@ function checkWinner() {
       cell7.textContent === playerO.letter)
   ) {
     winnerMessage.textContent = "Player O Wins!!!";
+    gameOver = true;
   }
 }
 
