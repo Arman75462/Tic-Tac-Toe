@@ -6,7 +6,6 @@ const gameBoard = document.querySelector(".game-board");
 const btnX = document.querySelector(".btn-x");
 const btnO = document.querySelector(".btn-o");
 const winnerMessage = document.querySelector(".winner-message");
-const cells = document.querySelectorAll(".grid-item");
 const cell1 = document.querySelector(".grid-item1");
 const cell2 = document.querySelector(".grid-item2");
 const cell3 = document.querySelector(".grid-item3");
@@ -17,51 +16,6 @@ const cell7 = document.querySelector(".grid-item7");
 const cell8 = document.querySelector(".grid-item8");
 const cell9 = document.querySelector(".grid-item9");
 
-cell1.addEventListener("click", function () {
-  cell1.textContent = "x";
-  checkWinner();
-});
-
-cell2.addEventListener("click", function () {
-  cell2.textContent = "x";
-  checkWinner();
-});
-
-cell3.addEventListener("click", function () {
-  cell3.textContent = "x";
-  checkWinner();
-});
-
-cell4.addEventListener("click", function () {
-  cell4.textContent = "x";
-  checkWinner();
-});
-
-cell5.addEventListener("click", function () {
-  cell5.textContent = "x";
-  checkWinner();
-});
-
-cell6.addEventListener("click", function () {
-  cell6.textContent = "x";
-  checkWinner();
-});
-
-cell7.addEventListener("click", function () {
-  cell7.textContent = "x";
-  checkWinner();
-});
-
-cell8.addEventListener("click", function () {
-  cell8.textContent = "x";
-  checkWinner();
-});
-
-cell9.addEventListener("click", function () {
-  cell9.textContent = "x";
-  checkWinner();
-});
-
 /* factory functio to create player object */
 function createPlayer(letter, turn) {
   return {
@@ -69,48 +23,248 @@ function createPlayer(letter, turn) {
     turn,
   };
 }
+const playerX = createPlayer("x", true);
+const playerO = createPlayer("o", false);
 
-const playerX = createPlayer("x", false);
-const playerO = createPlayer("o", true);
+let playerXTurn = [];
+let playerOTurn = [];
 
-function checkWinner() {
-  if (
-    (cell1.textContent === "x" &&
-      cell2.textContent === "x" &&
-      cell3.textContent === "x") ||
-    (cell4.textContent === "x" &&
-      cell5.textContent === "x" &&
-      cell6.textContent === "x") ||
-    (cell7.textContent === "x" &&
-      cell8.textContent === "x" &&
-      cell9.textContent === "x")
-  ) {
-    winnerMessage.textContent = "Player X Wins!!!";
-  } else if (
-    (cell1.textContent === "x" &&
-      cell4.textContent === "x" &&
-      cell7.textContent === "x") ||
-    (cell2.textContent === "x" &&
-      cell5.textContent === "x" &&
-      cell8.textContent === "x") ||
-    (cell3.textContent === "x" &&
-      cell6.textContent === "x" &&
-      cell9.textContent === "x")
-  ) {
-    winnerMessage.textContent = "Player X Wins!!!";
-  } else if (
-    (cell1.textContent === "x" &&
-      cell5.textContent === "x" &&
-      cell9.textContent === "x") ||
-    (cell3.textContent === "x" &&
-      cell5.textContent === "x" &&
-      cell7.textContent === "x")
-  ) {
-    winnerMessage.textContent = "Player X Wins!!!";
+function playerTurnLogic() {
+  if (playerXTurn.includes(playerX.letter)) {
+    playerX.turn = false;
+    playerXTurn = [];
+    playerO.turn = true;
+  } else if (playerOTurn.includes(playerO.letter)) {
+    playerO.turn = false;
+    playerOTurn = [];
+    playerX.turn = true;
   }
 }
 
-function playerTurn() {
+cell1.addEventListener("click", function () {
+  if (cell1.textContent === "" && (playerO.turn || playerX.turn)) {
+    if (playerO.turn) {
+      cell1.textContent = playerO.letter;
+      playerOTurn.push(playerO.letter);
+      console.log(playerOTurn);
+    } else if (playerX.turn) {
+      cell1.textContent = playerX.letter;
+      playerXTurn.push(playerX.letter);
+      console.log(playerXTurn);
+    }
+    checkWinner();
+    playerTurnLogic();
+    playerTurnStyle();
+  }
+});
+
+cell2.addEventListener("click", function () {
+  if (cell2.textContent === "" && (playerO.turn || playerX.turn)) {
+    if (playerO.turn) {
+      cell2.textContent = playerO.letter;
+      playerOTurn.push(playerO.letter);
+      console.log(playerOTurn);
+    } else if (playerX.turn) {
+      cell2.textContent = playerX.letter;
+      playerXTurn.push(playerX.letter);
+      console.log(playerXTurn);
+    }
+    checkWinner();
+    playerTurnLogic();
+    playerTurnStyle();
+  }
+});
+
+cell3.addEventListener("click", function () {
+  if (cell3.textContent === "" && (playerO.turn || playerX.turn)) {
+    if (playerO.turn) {
+      cell3.textContent = playerO.letter;
+      playerOTurn.push(playerO.letter);
+      console.log(playerOTurn);
+    } else if (playerX.turn) {
+      cell3.textContent = playerX.letter;
+      playerXTurn.push(playerX.letter);
+      console.log(playerXTurn);
+    }
+    checkWinner();
+    playerTurnLogic();
+    playerTurnStyle();
+  }
+});
+
+cell4.addEventListener("click", function () {
+  if (cell4.textContent === "" && (playerO.turn || playerX.turn)) {
+    if (playerO.turn) {
+      cell4.textContent = playerO.letter;
+      playerOTurn.push(playerO.letter);
+      console.log(playerOTurn);
+    } else if (playerX.turn) {
+      cell4.textContent = playerX.letter;
+      playerXTurn.push(playerX.letter);
+      console.log(playerXTurn);
+    }
+    checkWinner();
+    playerTurnLogic();
+    playerTurnStyle();
+  }
+});
+
+cell5.addEventListener("click", function () {
+  if (cell5.textContent === "" && (playerO.turn || playerX.turn)) {
+    if (playerO.turn) {
+      cell5.textContent = playerO.letter;
+      playerOTurn.push(playerO.letter);
+      console.log(playerOTurn);
+    } else if (playerX.turn) {
+      cell5.textContent = playerX.letter;
+      playerXTurn.push(playerX.letter);
+      console.log(playerXTurn);
+    }
+    checkWinner();
+    playerTurnLogic();
+    playerTurnStyle();
+  }
+});
+
+cell6.addEventListener("click", function () {
+  if (cell6.textContent === "" && (playerO.turn || playerX.turn)) {
+    if (playerO.turn) {
+      cell6.textContent = playerO.letter;
+      playerOTurn.push(playerO.letter);
+      console.log(playerOTurn);
+    } else if (playerX.turn) {
+      cell6.textContent = playerX.letter;
+      playerXTurn.push(playerX.letter);
+      console.log(playerXTurn);
+    }
+    checkWinner();
+    playerTurnLogic();
+    playerTurnStyle();
+  }
+});
+
+cell7.addEventListener("click", function () {
+  if (cell7.textContent === "" && (playerO.turn || playerX.turn)) {
+    if (playerO.turn) {
+      cell7.textContent = playerO.letter;
+      playerOTurn.push(playerO.letter);
+      console.log(playerOTurn);
+    } else if (playerX.turn) {
+      cell7.textContent = playerX.letter;
+      playerXTurn.push(playerX.letter);
+      console.log(playerXTurn);
+    }
+    checkWinner();
+    playerTurnLogic();
+    playerTurnStyle();
+  }
+});
+
+cell8.addEventListener("click", function () {
+  if (cell8.textContent === "" && (playerO.turn || playerX.turn)) {
+    if (playerO.turn) {
+      cell8.textContent = playerO.letter;
+      playerOTurn.push(playerO.letter);
+      console.log(playerOTurn);
+    } else if (playerX.turn) {
+      cell8.textContent = playerX.letter;
+      playerXTurn.push(playerX.letter);
+      console.log(playerXTurn);
+    }
+    checkWinner();
+    playerTurnLogic();
+    playerTurnStyle();
+  }
+});
+
+cell9.addEventListener("click", function () {
+  if (cell9.textContent === "" && (playerO.turn || playerX.turn)) {
+    if (playerO.turn) {
+      cell9.textContent = playerO.letter;
+      playerOTurn.push(playerO.letter);
+      console.log(playerOTurn);
+    } else if (playerX.turn) {
+      cell9.textContent = playerX.letter;
+      playerXTurn.push(playerX.letter);
+      console.log(playerXTurn);
+    }
+    checkWinner();
+    playerTurnLogic();
+    playerTurnStyle();
+  }
+});
+
+function checkWinner() {
+  if (
+    (cell1.textContent === playerX.letter &&
+      cell2.textContent === playerX.letter &&
+      cell3.textContent === playerX.letter) ||
+    (cell4.textContent === playerX.letter &&
+      cell5.textContent === playerX.letter &&
+      cell6.textContent === playerX.letter) ||
+    (cell7.textContent === playerX.letter &&
+      cell8.textContent === playerX.letter &&
+      cell9.textContent === playerX.letter)
+  ) {
+    winnerMessage.textContent = "Player X Wins!!!";
+  } else if (
+    (cell1.textContent === playerX.letter &&
+      cell4.textContent === playerX.letter &&
+      cell7.textContent === playerX.letter) ||
+    (cell2.textContent === playerX.letter &&
+      cell5.textContent === playerX.letter &&
+      cell8.textContent === playerX.letter) ||
+    (cell3.textContent === playerX.letter &&
+      cell6.textContent === playerX.letter &&
+      cell9.textContent === playerX.letter)
+  ) {
+    winnerMessage.textContent = "Player X Wins!!!"; // Call the triggerConfetti function
+  } else if (
+    (cell1.textContent === playerX.letter &&
+      cell5.textContent === playerX.letter &&
+      cell9.textContent === playerX.letter) ||
+    (cell3.textContent === playerX.letter &&
+      cell5.textContent === playerX.letter &&
+      cell7.textContent === playerX.letter)
+  ) {
+    winnerMessage.textContent = "Player X Wins!!!";
+  } else if (
+    (cell1.textContent === playerO.letter &&
+      cell2.textContent === playerO.letter &&
+      cell3.textContent === playerO.letter) ||
+    (cell4.textContent === playerO.letter &&
+      cell5.textContent === playerO.letter &&
+      cell6.textContent === playerO.letter) ||
+    (cell7.textContent === playerO.letter &&
+      cell8.textContent === playerO.letter &&
+      cell9.textContent === playerO.letter)
+  ) {
+    winnerMessage.textContent = "Player O Wins!!!";
+  } else if (
+    (cell1.textContent === playerO.letter &&
+      cell4.textContent === playerO.letter &&
+      cell7.textContent === playerO.letter) ||
+    (cell2.textContent === playerO.letter &&
+      cell5.textContent === playerO.letter &&
+      cell8.textContent === playerO.letter) ||
+    (cell3.textContent === playerO.letter &&
+      cell6.textContent === playerO.letter &&
+      cell9.textContent === playerO.letter)
+  ) {
+    winnerMessage.textContent = "Player O Wins!!!";
+  } else if (
+    (cell1.textContent === playerO.letter &&
+      cell5.textContent === playerO.letter &&
+      cell9.textContent === playerO.letter) ||
+    (cell3.textContent === playerO.letter &&
+      cell5.textContent === playerO.letter &&
+      cell7.textContent === playerO.letter)
+  ) {
+    winnerMessage.textContent = "Player O Wins!!!";
+  }
+}
+
+function playerTurnStyle() {
   if (playerX.turn) {
     // Set the text-shadow property
     btnX.style.textShadow =
@@ -155,5 +309,3 @@ function playerTurn() {
     btnX.style.border = "0.125em solid red";
   }
 }
-
-playerTurn();
