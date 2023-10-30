@@ -6,6 +6,8 @@ const gameBoard = document.querySelector(".game-board");
 const cardX = document.querySelector(".card-x");
 const cardO = document.querySelector(".card-o");
 const winnerMessage = document.querySelector(".winner-message");
+const restartGameButton = document.querySelector(".btn-restart-game");
+const resetScoreButton = document.querySelector(".btn-reset-score");
 const cell1 = document.querySelector(".grid-item1");
 const cell2 = document.querySelector(".grid-item2");
 const cell3 = document.querySelector(".grid-item3");
@@ -16,7 +18,7 @@ const cell7 = document.querySelector(".grid-item7");
 const cell8 = document.querySelector(".grid-item8");
 const cell9 = document.querySelector(".grid-item9");
 
-/* factory functio to create player object */
+/* Factory function to create player object */
 function createPlayer(letter, turn) {
   return {
     letter,
@@ -41,6 +43,22 @@ function playerTurnLogic() {
     playerX.turn = true;
   }
 }
+
+restartGameButton.addEventListener("click", function () {
+  gameOver = false;
+  playerXTurn = [];
+  playerOTurn = [];
+
+  cell1.textContent = "";
+  cell2.textContent = "";
+  cell3.textContent = "";
+  cell4.textContent = "";
+  cell5.textContent = "";
+  cell6.textContent = "";
+  cell7.textContent = "";
+  cell8.textContent = "";
+  cell9.textContent = "";
+});
 
 cell1.addEventListener("click", function () {
   if (!gameOver && cell1.textContent === "" && (playerO.turn || playerX.turn)) {
