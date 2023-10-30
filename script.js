@@ -3,8 +3,8 @@
 /* Selectors */
 const body = document.querySelector("body");
 const gameBoard = document.querySelector(".game-board");
-const btnX = document.querySelector(".btn-x");
-const btnO = document.querySelector(".btn-o");
+const cardX = document.querySelector(".card-x");
+const cardO = document.querySelector(".card-o");
 const winnerMessage = document.querySelector(".winner-message");
 const cell1 = document.querySelector(".grid-item1");
 const cell2 = document.querySelector(".grid-item2");
@@ -274,45 +274,45 @@ function checkWinner() {
 function playerTurnStyle() {
   if (playerX.turn) {
     // Set the text-shadow property
-    btnX.style.textShadow =
+    cardX.style.textShadow =
       "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em green";
     // Set the box-shadow property
-    btnX.style.boxShadow = "inset 0 0 0.5em 0 green, 0 0 5em 1.5em green";
+    cardX.style.boxShadow = "inset 0 0 0.5em 0 green, 0 0 5em 1.5em green";
     // Set the color property
-    btnX.style.color = "green";
+    cardX.style.color = "green";
     // Set the border property
-    btnX.style.border = "0.125em solid green";
+    cardX.style.border = "0.125em solid green";
 
     // Set the text-shadow property
-    btnO.style.textShadow =
+    cardO.style.textShadow =
       "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em red";
     // Set the box-shadow property
-    btnO.style.boxShadow =
+    cardO.style.boxShadow =
       "inset 0 0 0.5em 0 rgb(255, 0, 0), 0 0 5em 1.5em red";
     // Set the color property
-    btnO.style.color = "red";
+    cardO.style.color = "red";
     // Set the border property
-    btnO.style.border = "0.125em solid red";
+    cardO.style.border = "0.125em solid red";
   } else if (playerO.turn) {
     // Set the text-shadow property
-    btnO.style.textShadow =
+    cardO.style.textShadow =
       "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em green";
     // Set the box-shadow property
-    btnO.style.boxShadow = "inset 0 0 0.5em 0 green, 0 0 5em 1.5em green";
+    cardO.style.boxShadow = "inset 0 0 0.5em 0 green, 0 0 5em 1.5em green";
     // Set the color property
-    btnO.style.color = "green";
+    cardO.style.color = "green";
     // Set the border property
-    btnO.style.border = "0.125em solid green";
+    cardO.style.border = "0.125em solid green";
 
     // Set the text-shadow property
-    btnX.style.textShadow =
+    cardX.style.textShadow =
       "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em red";
     // Set the box-shadow property
-    btnX.style.boxShadow =
+    cardX.style.boxShadow =
       "inset 0 0 0.5em 0 rgb(255, 0, 0), 0 0 5em 1.5em red";
     // Set the color property
-    btnX.style.color = "red";
+    cardX.style.color = "red";
     // Set the border property
-    btnX.style.border = "0.125em solid red";
+    cardX.style.border = "0.125em solid red";
   }
 }
