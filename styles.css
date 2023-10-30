@@ -158,7 +158,7 @@ SPECIFIC LAYOUT AND STYLES====
 /* PLAYER-O-SECTION */
 .card-o {
   text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em red;
-  box-shadow: inset 0 0 0.5em 0 rgb(255, 0, 0), 0 0 5em 1.5em red;
+  box-shadow: inset 0 0 0.5em 0 red, 0 0 5em 1.5em red;
   color: red;
   border: red 0.125em solid;
 }
@@ -207,15 +207,3 @@ SPECIFIC LAYOUT AND STYLES====
   border-left: 2px solid white;
   border-right: 2px solid white;
 }
-
-/*============================
-MEDIA QUERIES=================
-==============================*/
-
-/*============================
-GENERAL LAYOUT AND STYLES=====
-==============================*/
-
-/*============================
-SPECIFIC LAYOUT AND STYLES====
-==============================*/
