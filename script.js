@@ -47,10 +47,9 @@ function playerTurnLogic() {
   }
 }
 
+/* With this button, you can reset the game */
 restartGameButton.addEventListener("click", function () {
   gameOver = false;
-  playerXTurn = [];
-  playerOTurn = [];
 
   cell1.textContent = "";
   cell2.textContent = "";
@@ -64,6 +63,7 @@ restartGameButton.addEventListener("click", function () {
   winnerMessage.textContent = "";
 });
 
+/* With this button, you can reset the score AND reset the game */
 resetScoreButton.addEventListener("click", function () {
   playerX.score = 0;
   playerO.score = 0;
