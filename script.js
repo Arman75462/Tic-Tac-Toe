@@ -1,11 +1,12 @@
 "use strict";
 
 /* Selectors */
+const body = document.querySelector("body");
 const playerXScore = document.querySelector(".player-x-score");
 const playerOScore = document.querySelector(".player-o-score");
 const cardX = document.querySelector(".card-x");
 const cardO = document.querySelector(".card-o");
-const winnerMessage = document.querySelector(".winner-message");
+const winnerMessage = document.getElementById("message");
 const restartGameButton = document.querySelector(".btn-restart-game");
 const resetScoreButton = document.querySelector(".btn-reset-score");
 const cell = document.querySelectorAll(".grid-item");
@@ -28,8 +29,8 @@ function createPlayer(username, letter, turn, score) {
     score,
   };
 }
-const playerX = createPlayer("Player X", "x", true, 0);
-const playerO = createPlayer("Player O", "o", false, 0);
+const playerX = createPlayer("Player X", "X", true, 0);
+const playerO = createPlayer("Player O", "O", false, 0);
 
 /* Global varibales, arrays and objects */
 let playerXTurn = [];
@@ -50,6 +51,8 @@ restartGameButton.addEventListener("click", function () {
   cell8.textContent = "";
   cell9.textContent = "";
   winnerMessage.textContent = "";
+  cardX.textContent = "X";
+  cardO.textContent = "O";
 });
 
 /* With this button, you can reset the score AND reset the game */
@@ -71,6 +74,8 @@ resetScoreButton.addEventListener("click", function () {
   cell8.textContent = "";
   cell9.textContent = "";
   winnerMessage.textContent = "";
+  cardX.textContent = "X";
+  cardO.textContent = "O";
 });
 
 /* Click event-listeners for all cells */
@@ -91,8 +96,6 @@ for (let i = 0; i < cell.length; i++) {
       checkWinner();
       playerTurnLogic();
       playerTurnStyle();
-      console.log(playerOTurn);
-      console.log(playerXTurn);
     }
   });
 }
@@ -164,13 +167,42 @@ function checkWinner() {
       cell7.textContent === playerO.letter)
   ) {
     handleWin(playerO);
+  } else if (
+    (cell1.textContent === playerO.letter ||
+      cell1.textContent === playerX.letter) &&
+    (cell2.textContent === playerO.letter ||
+      cell2.textContent === playerX.letter) &&
+    (cell3.textContent === playerO.letter ||
+      cell3.textContent === playerX.letter) &&
+    (cell4.textContent === playerO.letter ||
+      cell4.textContent === playerX.letter) &&
+    (cell5.textContent === playerO.letter ||
+      cell5.textContent === playerX.letter) &&
+    (cell6.textContent === playerO.letter ||
+      cell6.textContent === playerX.letter) &&
+    (cell7.textContent === playerO.letter ||
+      cell7.textContent === playerX.letter) &&
+    (cell8.textContent === playerO.letter ||
+      cell8.textContent === playerX.letter) &&
+    (cell9.textContent === playerO.letter ||
+      cell9.textContent === playerX.letter)
+  ) {
+    winnerMessage.textContent = "It's a tie";
+    winnerMessage.classList.remove("winner-message");
+    winnerMessage.classList.add("tie-message");
   }
 }
 
 function handleWin(winner) {
   winnerMessage.textContent = `${winner.username} wins!!!`;
+  winnerMessage.classList.add("winner-message");
+  winnerMessage.classList.remove("tie-message");
+
   gameOver = true;
   winner.score = winner.score + 1;
+  playerX.turn = false;
+  playerO.turn = false;
+
   if (winner === playerX) {
     playerXScore.textContent = `Score: ${winner.score}`;
   } else if (winner === playerO) {
@@ -180,49 +212,34 @@ function handleWin(winner) {
 
 function playerTurnStyle() {
   if (playerX.turn) {
-    // Set the text-shadow property
     cardX.style.textShadow =
       "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em green";
-    // Set the box-shadow property
     cardX.style.boxShadow = "inset 0 0 0.5em 0 green, 0 0 5em 1.5em green";
-    // Set the color property
     cardX.style.color = "green";
-    // Set the border property
     cardX.style.border = "0.125em solid green";
 
-    // Set the text-shadow property
     cardO.style.textShadow =
       "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em red";
-    // Set the box-shadow property
     cardO.style.boxShadow =
       "inset 0 0 0.5em 0 rgb(255, 0, 0), 0 0 5em 1.5em red";
-    // Set the color property
     cardO.style.color = "red";
-    // Set the border property
     cardO.style.border = "0.125em solid red";
   } else if (playerO.turn) {
-    // Set the text-shadow property
     cardO.style.textShadow =
       "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em green";
-    // Set the box-shadow property
     cardO.style.boxShadow = "inset 0 0 0.5em 0 green, 0 0 5em 1.5em green";
-    // Set the color property
     cardO.style.color = "green";
-    // Set the border property
     cardO.style.border = "0.125em solid green";
 
-    // Set the text-shadow property
     cardX.style.textShadow =
       "0 0 0.125em hsla(0, 0%, 100%, 0.3), 0 0 0.45em red";
-    // Set the box-shadow property
     cardX.style.boxShadow =
       "inset 0 0 0.5em 0 rgb(255, 0, 0), 0 0 5em 1.5em red";
-    // Set the color property
     cardX.style.color = "red";
-    // Set the border property
     cardX.style.border = "0.125em solid red";
   }
 }
+playerTurnStyle();
 
 function playerTurnLogic() {
   if (playerXTurn.includes(playerX.letter)) {
